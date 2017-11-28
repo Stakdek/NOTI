@@ -14,8 +14,9 @@ SUBJECT=" '→→Sprüche, Tipps und Philosophien←←' "
 
 def send_cmd(MESSAGE):
     '''
+    get message
     fetch command and
-    send command to terminal
+    send and print command to terminal
     '''
     print MESSAGE
     os.system('notify-send ' + PARAM + IMAGE_PATH_PARAM + SUBJECT + MESSAGE )
@@ -25,7 +26,6 @@ def fetch_message_offline():
     get length of data
     choose random string from data
     fetch it to a message together
-    TODO: crawl from website
     '''
     length = len(data.data) - 1
     rand_message = random.randint(0, length)
@@ -33,8 +33,7 @@ def fetch_message_offline():
     MESSAGE="'"+ message +"'"
     send_cmd(MESSAGE=MESSAGE)
 
-    '''BAUSTELLE
-
+    '''
     nottizen
 
     entweder automatisiertes erweitern der sprüche oder aus dem internet holen und dann anzeigen
