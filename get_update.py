@@ -1,4 +1,14 @@
-URL='https://www.google.de/'
+# -*- coding: utf-8 -*-
+import os
+import random
+import urllib
+import urllib2
+#source of messages
+import data
+
+HTML=''
+
+URL='https://www.python-kurs.eu/'
 def fetch_message_online(URL):
     '''
     get data from page
@@ -11,21 +21,20 @@ def fetch_message_online(URL):
     end second message key word '</div>'
     '''
     print URL
-    resp = urllib2.urlopen(URL)
+    resp = urllib.urlopen(URL)
     print resp
-    html = response.read()
-    print html
-    if 'Spruch des Tages:' in html:
-       print 'YEEEEES'
+    HTML = resp.read()
+    print HTML
+    if 'Spruch des Tages:' in HTML:
+        print 'YEEEEES'
+    return HTML
+
 
 
 
     '''BAUSTELLE
 
-    import urllib
 
-    resp = urllib.urlopen('https://somewebsite.com') # open url
-    page = resp.read()                               # copy website source to 'page' variable
     text_file = open("Output.txt", "w")              # open txt file
     text_file.write(page)                            # insert website source into txt file
     text_file.close()
@@ -41,18 +50,7 @@ def fetch_message_online(URL):
 
 
 
-online = True
-if online is True:
-    fetch_message_online(URL=URL)
-elif online is None:
-    dehtml('jello')
-else:
-    fetch_message_offline()
-
-'''
-
-
-
+HTML = fetch_message_online(URL=URL)
 
 # html pasrer start
 
@@ -86,24 +84,20 @@ class _DeHTMLParser(HTMLParser):
         return ''.join(self.__text).strip()
 
 def dehtml(text):
-    try:
-        parser = _DeHTMLParser()
-        parser.feed(text)
-        parser.close()
-        return parser.text()
-    except:
-        print_exc(file=stderr)
-        return text
+    # try:
+    parser = _DeHTMLParser()
+    parser.feed(text)
+    parser.close()
+    return parser.text()
+    #except:
+        # print_exc(file=stderr)
+        # print text
 
-    print(dehtml(text))
+    # print(dehtml(text))
 
 # html pasrer end
 # switch from online to offline
-online = True
-if online is True:
-    fetch_message_online(URL=URL)
-elif online is None:
-    dehtml('jello')
-else:
-    fetch_message_offline()
-'''
+
+
+
+dehtml(HTML)

@@ -38,7 +38,7 @@ def fetch_message_offline():
 
     entweder automatisiertes erweitern der sprüche oder aus dem internet holen und dann anzeigen
     run.py in mehrere biblios packen
-
+    data_fetch.py to fetch to datas to one big data
 
     '''
 fetch_message_offline()
