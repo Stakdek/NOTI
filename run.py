@@ -7,7 +7,7 @@ import urllib2
 import data
 
 PATH=os.path.dirname(os.path.abspath( __file__ )) # get current path and merge with imager path
-IMAGE_PATH_PARAM=" -i '" + PATH + "/no-country-for-old-men-3.jpg' "
+IMAGE_PATH_PARAM=" -i '" + PATH + "/noo.jpg' "
 PARAM=" --expire-time=1 -t 20000 " # set params current param: set expire-time to 20 second
 MESSAGE=""
 SUBJECT=" '→→Sprüche, Tipps und Philosophien←←' "

@@ -140,5 +140,6 @@ data = ['''Man is the best computer we can put aboard a spacecraft… and the on
         '''„Unix wurde nicht entwickelt, um seine Benutzer daran zu hindern, dumme Dinge zu tun, denn das würde diese auch davon abhalten, schlaue Dinge zu tun.“ (Doug Gwyn)''',
 
         '''„Unix sagt niemals ›bitte‹.“ (Rob Pike)''',
-	'''Die erste Regel des Fight-Clubs ist: Man redet nicht über den Fight-Club.''',
+
+	    '''Die erste Regel des Fight-Clubs ist: Man redet nicht über den Fight-Club.''',
     ]
