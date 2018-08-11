@@ -20,6 +20,7 @@ def send_cmd(MESSAGE):
     '''
     print MESSAGE
     os.system('notify-send ' + PARAM + IMAGE_PATH_PARAM + SUBJECT + MESSAGE )
+    return MESSAGE
 
 def fetch_message_offline():
     '''
