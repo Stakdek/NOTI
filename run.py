@@ -5,6 +5,7 @@ import urllib
 import urllib2
 #source of messages
 import data
+import sys
 
 PATH=os.path.dirname(os.path.abspath( __file__ )) # get current path and merge with imager path
 IMAGE_PATH_PARAM=" -i '" + PATH + "/noo.jpg' "
@@ -19,7 +20,8 @@ def send_cmd(MESSAGE):
     send and print command to terminal
     '''
     print MESSAGE
-    os.system('notify-send ' + PARAM + IMAGE_PATH_PARAM + SUBJECT + MESSAGE )
+    if not len(sys.argv) > 1:
+        os.system('notify-send ' + PARAM + IMAGE_PATH_PARAM + SUBJECT + MESSAGE )
     return MESSAGE
 
 def fetch_message_offline():

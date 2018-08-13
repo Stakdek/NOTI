@@ -7,7 +7,7 @@ FISH_PATH = PATH
 MESSAGE="Ein Bash Script zum Ausführen des Scripts wurde erstellt"
 FISH='''
 function fish_greeting
-    python ''' + FISH_PATH + '''/run.py''' + '''
+    python ''' + FISH_PATH + '''/run.py noNotify''' + '''
 end
 '''
 
