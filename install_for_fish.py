@@ -7,15 +7,16 @@ FISH_PATH = PATH
 MESSAGE="Ein Bash Script zum Ausführen des Scripts wurde erstellt"
 FISH='''
 function fish_greeting
-    python ''' + FISH_PATH + '''/run.py noNotify''' + '''
+    python ''' + FISH_PATH + '''/run.py ''' + FISH_PATH + ''' noNotify
 end
 '''
 
 def send_cmd(PATH, PARAM):
     '''
     fetch path from runner-script
+    make folder
     touch File
-    open file and write bash command with path to run the run.py
+    open file and write fish function with path to run the run.py
     '''
     runner_path = PATH + PARAM
     os.system('mkdir ' + PATH)

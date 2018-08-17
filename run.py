@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
+
+'''
+Regel des Zusammenbaus:
+Entwirf Programme so,
+dass sie mit anderen Programmen verknüpft werden können.
+'''
+
+
 import os
 import random
 import urllib
 import urllib2
-#source of messages
-import data
 import sys
+# import get_update
+import json
 
 PATH=os.path.dirname(os.path.abspath( __file__ )) # get current path and merge with imager path
 IMAGE_PATH_PARAM=" -i '" + PATH + "/noo.jpg' "
@@ -20,8 +28,9 @@ def send_cmd(MESSAGE):
     send and print command to terminal
     '''
     print MESSAGE
-    if not len(sys.argv) > 1:
+    if len(sys.argv) < 2:
         os.system('notify-send ' + PARAM + IMAGE_PATH_PARAM + SUBJECT + MESSAGE )
+        import get_update # get new quotes
     return MESSAGE
 
 def fetch_message_offline():
@@ -30,10 +39,13 @@ def fetch_message_offline():
     choose random string from data
     fetch it to a message together
     '''
-    length = len(data.data) - 1
+
+    with open( sys.argv[1] + '/quotes.json') as file:
+        quotes = json.load(file)
+    length = len(quotes) - 1
     rand_message = random.randint(0, length)
-    message = data.data[rand_message]
-    MESSAGE="'"+ message +"'"
+    message = quotes[rand_message]['quote']
+    MESSAGE="'"+ str(message.encode('utf-8')) +"'"
     send_cmd(MESSAGE=MESSAGE)
 
     '''

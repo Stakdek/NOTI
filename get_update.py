@@ -4,13 +4,13 @@ import random
 import urllib
 import urllib2
 import re
-import data #source of messages
+import json
 
 HTML=''
 URL='http://sprichwortgenerator.de/'
 
 
-def fetch_message_online(URL):
+def update(URL):
     '''
     *WORKING*
     get data from page
@@ -25,27 +25,20 @@ def fetch_message_online(URL):
     # print resp
     HTML = resp.read()
     parsedHTML = re.search('<div class="spwort".*[</div>$]',str(HTML)) # match the message
-    parsed_message = parsedHTML.group(0)[20:-6] # get juste the message
-    return parsed_message
-
-
-def update_data(parsed_message):
-    '''
-    *NOT WORKING*
-    '''
-    data.data.append(parsed_message)
-    text_file = open("data.py", "w")              # open txt file
-    text_file.write('# -*- coding: utf-8 -*- \ndata = ' + str(data.data))        # insert website source into txt file
-    text_file.close()
-
-
-def update():
-    parsed_message = fetch_message_online(URL)
+    parsed_message = parsedHTML.group(0)[20:-6] # get just the message
+    # open json
+    with open('quotes.json') as file:
+        quotes = json.load(file)
+    # check length
+    print len(quotes)
     print parsed_message
-    # update_data(parsed_message)
+    # fetch into list of dict
+    data = [{"author" : "unknown", "quote" : parsed_message}]
+    # fetch with list from file
+    quotes = data + quotes
+    with open('quotes.json', 'w') as outfile:
+        json.dump(quotes, outfile)
+    return
 
 
-
-
-
-update()
+update(URL)

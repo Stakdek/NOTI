@@ -6,7 +6,7 @@ BASH_PATH = PATH
 PARAM="NOTI.sh"
 MESSAGE="Ein Bash Script zum Ausführen des Scripts wurde erstellt"
 SUBJECT=" '→→Sprüche, Tipps und Philosophien←←' "
-BASH='python ' + '"' + BASH_PATH + '/run.py' + '"'
+BASH='python ' + BASH_PATH + '/run.py' + ' ' + BASH_PATH
 print BASH
 def send_cmd(PATH, PARAM):
     '''
