@@ -28,7 +28,7 @@ def send_cmd(MESSAGE):
     send and print command to terminal
     '''
     print MESSAGE
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         os.system('notify-send ' + PARAM + IMAGE_PATH_PARAM + SUBJECT + MESSAGE )
         import get_update # get new quotes
     return MESSAGE
